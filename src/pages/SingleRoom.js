@@ -26,12 +26,46 @@ export default class SingleRoom extends Component {
             </div>;
         }
         const {name,description,capacity,size,price,extras,breakfast,pets,images} = room
+        const [mainImg,...defaultImg] = images;
+        console.log(defaultImg);
         return (
-            <StyledHero img={images[0]}>
-                <Banner title={`${name} room`}>
-                    <Link to='/rooms' className='btn-primary'>Back to Rooms</Link>
-                </Banner>
-            </StyledHero>
+            <>
+                <StyledHero img={mainImg}>
+                    <Banner title={`${name} room`}>
+                        <Link to='/rooms' className='btn-primary'>Back to Rooms</Link>
+                    </Banner>
+                </StyledHero>
+                <section className="single-room">
+                    <div className="single-room-images">
+                        {defaultImg.map((item,index)=>{return <img key={index} src={item} alt={name} />;})}
+                    </div>
+                    <div className="single-room-info">
+                        <article className="desc">
+                            <h3>Details</h3>
+                            <p>{description}</p>
+                        </article>
+                        <article className="info">
+                            <h3>Infomation</h3>
+                            <h6>price: ${price}</h6>
+                            <h6>size: {size} SQFT</h6>
+                            <h6>
+                                max capacity: {""}
+                                {capacity > 1 ? `${capacity} people`: `${capacity} person`}
+                            </h6>
+                            <h6>{pets ? "pets allowed":"no pets allowed"}</h6>
+                            <h6>{breakfast && "Free Breakfast Included"}</h6>
+                        </article>
+                    </div>
+                </section>
+                <section className="room-extras">
+                    <h6>Extra Features</h6>
+                    <ul class="extras">
+                        {extras.map((item,index) => {
+                            return <li key={index}>- {item}</li>
+                        })}
+                    </ul>
+                </section>
+            </>
         ) 
     }
 }
