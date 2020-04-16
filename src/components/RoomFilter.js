@@ -53,7 +53,28 @@ export default function RoomFilter({rooms}) {
                         <label htmlFor="price">Room Price ${price}</label>
                         <input type="range" name="price" min={minPrice} max={maxPrice} id="price" value={price} onChange={handelChange} className="form-control"/>
                     </div>
-                 {/*end select price range*/}
+                {/*end select price range*/}
+                {/*select size*/}
+                    <div className="form-group">
+                        <label htmlFor="size">Room Size</label>
+                        <div className="form-group">
+                            <input type="number" name="minSize" id="size" value={minSize} onChange={handelChange} className="size-input" />
+                            <input type="number" name="maxSize" id="size" value={maxSize} onChange={handelChange} className="size-input" />
+                        </div>
+                    </div>
+                {/*end select size*/}
+                {/*Extra*/}
+                    <div className="form-group">
+                        <div className="single-extra">
+                            <input type="checkbox" name="breakfast" id="breakfast" checked={breakfast} onChange={handelChange}/> 
+                            <label htmlFor="breakfast">Breakfast</label>
+                        </div>
+                        <div className="single-extra">
+                            <input type="checkbox" name="pets" id="pets" checked={pets} onChange={handelChange}/> 
+                            <label htmlFor="pets">pets</label>
+                        </div>
+                    </div>
+                {/*End Extra*/}
            </form>
        </section>
     )
